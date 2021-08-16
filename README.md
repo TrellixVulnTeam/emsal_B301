@@ -1,9 +1,7 @@
 
 # emsâl ⚖︎
 
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/) 
-
-![GitHub followers](https://img.shields.io/github/followers/dgknrsln?style=social)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/) ![GitHub followers](https://img.shields.io/github/followers/dgknrsln?style=social)
 
 <sup>[TR]</sup> Yargıtay karar arama [arayüzünden](https://karararama.yargitay.gov.tr/YargitayBilgiBankasiIstemciWeb/) kararların, yıl ve karar numarası temelinde yarı otomatik olarak indirilmesini sağlayan Python kütüphanesi.
 
