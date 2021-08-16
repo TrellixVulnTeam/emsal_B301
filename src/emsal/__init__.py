@@ -1,0 +1,1 @@
+from emsal.emsal import get_decisions

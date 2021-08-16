@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/emsal/__init__.py
+src/emsal/emsal.py
+src/emsal.egg-info/PKG-INFO
+src/emsal.egg-info/SOURCES.txt
+src/emsal.egg-info/dependency_links.txt
+src/emsal.egg-info/top_level.txt
