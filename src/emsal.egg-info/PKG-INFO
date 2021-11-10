@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: emsal
-Version: 0.1.5
+Version: 0.1.6
 Summary: A Python library that enables semi-automatic downloading of decisions based on year and decision number from the Supreme Court decision search interface.
 Home-page: https://github.com/Bilirkisi/emsal
 Author: Doğukan Arslan

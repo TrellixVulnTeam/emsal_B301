@@ -19,7 +19,7 @@ You can use pip package manager system to install ```emsâl```.
 
     import emsal
 
-    emsal.get_decisions('2019', last_no='1978')
+    emsal.get_decisions(driver_path, '2019', last_no='1978')
 
 ## ➥Nasıl çalışır? / How does it work?
 
