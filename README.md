@@ -1,7 +1,6 @@
-
 # emsâl ⚖︎
 
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://choosealicense.com/licenses/gpl-3.0/) [![GitHub followers](https://img.shields.io/github/followers/dgknrsln?style=social)](https://github.com/dgknrsln)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/) ![GitHub followers](https://img.shields.io/github/followers/dgknrsln?style=social)
 
 <sup>[TR]</sup> Yargıtay karar arama [arayüzünden](https://karararama.yargitay.gov.tr/YargitayBilgiBankasiIstemciWeb/) kararların, yıl ve karar numarası temelinde yarı otomatik olarak indirilmesini sağlayan Python kütüphanesi.
 
@@ -31,9 +30,3 @@ Programı çalıştırdığınızda aşağıdaki gif'te görüleceği üzere pro
 <sup>[EN]</sup> The ```emsâl``` library basically saves the decisions (maximum one thousand) that include the relevant keyword in the specified decision number range and in the given year as a text document in the current directory.
 
 When you run the program, the program automatically fills in the keyword, date and decision number boxes, as can be seen in the gif below, and then waits 10 seconds for you to enter the Captcha. Then it saves the decisions one by one in the relevant directory. You don't need to do anything after this point. The program stops automatically after 1000 decisions, as the system fetches the decisions one thousand at a time. If you want to continue, you have to start again from the decision number where you left off.
-
-## ➥Gereklilikler / Requirements
-```
-bs4
-selenium
-```
