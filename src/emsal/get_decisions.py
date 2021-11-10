@@ -1,30 +1,33 @@
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 import re
 from os import path
 
 
 def get_decisions(driver_path, year, init_no=0, last_no=999999, keyword='içtihat'):
     # define driver
-    driver = webdriver.Chrome(executable_path=driver_path)
+    s = Service(driver_path)
+    driver = webdriver.Chrome(service=s)
 
     # get the website
     driver.get('https://karararama.yargitay.gov.tr/YargitayBilgiBankasiIstemciWeb/')
 
     # click to the search box
-    search_form = driver.find_element_by_id('aramaForm:aranan')
+    search_form = driver.driver.find_element(By.ID, 'aramaForm:aranan')
 
     # write down the search term
     search_form.send_keys(keyword)
 
     # click to the detailed search box
-    detailed_search_form = driver.find_element_by_id('aramaForm:detayliAramaLabel')
+    detailed_search_form = driver.find_element(By.ID, 'aramaForm:detayliAramaLabel')
     detailed_search_form.click()
 
     time.sleep(1)
     # click to the year box
-    year_input = driver.find_element_by_id('aramaForm:karaYilInput')
+    year_input = driver.find_element(By.ID, 'aramaForm:karaYilInput')
 
     # write down the year
     year_input.send_keys(year)
@@ -32,23 +35,23 @@ def get_decisions(driver_path, year, init_no=0, last_no=999999, keyword='içtiha
     time.sleep(1)
 
     # write down year range
-    year_input = driver.find_element_by_id('aramaForm:ilkKararNoInput')
+    year_input = driver.find_element(By.ID, 'aramaForm:ilkKararNoInput')
     year_input.send_keys(init_no)
-    driver.find_element_by_xpath("//body").click()
+    driver.find_element(By.XPATH, "//body").click()
     time.sleep(1)
 
-    year_input = driver.find_element_by_id('aramaForm:sonKararNoInput')
+    year_input = driver.find_element(By.ID, 'aramaForm:sonKararNoInput')
     year_input.send_keys(last_no)
     time.sleep(1)
 
     # click to sort by decision number
-    driver.find_element_by_xpath('//*[@id="aramaForm:siralamaKriteri"]/tbody/tr/td[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="aramaForm:siralamaKriteri"]/tbody/tr/td[2]').click()
 
     # wait for user to enter captcha
     time.sleep(10)
 
     # click to the search button
-    search_btn = driver.find_element_by_id('aramaForm:aramaButonu')
+    search_btn = driver.find_element(By.ID, 'aramaForm:aramaButonu')
     search_btn.click()
 
     # wait for website to fetch results
@@ -61,7 +64,7 @@ def get_decisions(driver_path, year, init_no=0, last_no=999999, keyword='içtiha
     num = int(soup.get_text().split(" Adet Karardan")[0].split(" ")[-1])
 
     # click to details button
-    show_btn = driver.find_element_by_id('aramaForm:sonucTable:0:rowbtn')
+    show_btn = driver.find_element(By.ID, 'aramaForm:sonucTable:0:rowbtn')
     show_btn.click()
 
     # wait for website to fetch result
@@ -87,7 +90,7 @@ def get_decisions(driver_path, year, init_no=0, last_no=999999, keyword='içtiha
                 0].replace('Metni"', 'Metni"\n')
 
         # determine file name as decision number
-        file_name = text.split(" K.")[0].split(" ")[-1].replace("/", "")
+        file_name = text.split("\n")[0].replace("/", "_")
 
         if path.exists(file_name):
             buff = 1
@@ -106,5 +109,5 @@ def get_decisions(driver_path, year, init_no=0, last_no=999999, keyword='içtiha
         if i != num - 1:
             # go to next decision
             time.sleep(3)
-            next_btn = driver.find_element_by_id('aramaForm:sonrakiEvrakLabel')
+            next_btn = driver.find_element(By.ID, 'aramaForm:sonrakiEvrakLabel')
             next_btn.click()
