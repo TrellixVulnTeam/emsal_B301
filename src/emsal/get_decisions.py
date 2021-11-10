@@ -16,7 +16,7 @@ def get_decisions(driver_path, year, init_no=0, last_no=999999, keyword='içtiha
     driver.get('https://karararama.yargitay.gov.tr/YargitayBilgiBankasiIstemciWeb/')
 
     # click to the search box
-    search_form = driver.driver.find_element(By.ID, 'aramaForm:aranan')
+    search_form = driver.find_element(By.ID, 'aramaForm:aranan')
 
     # write down the search term
     search_form.send_keys(keyword)
